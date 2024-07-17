@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= ($pageTitle) ?></title>
-    <meta name="description" content="Dynamic Resume">
-	<base href="<?= ($BASE) ?>/public/">
-    <link rel="stylesheet" href="styles/style.css">
-
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?= ($pageTitle) ?></title>
+        <base href="<?= ($BASE) ?>/public/">
+        <link rel="stylesheet" href="styles/style.css">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
 
 <body>
-	<header>
-		<h1 id="pageTitle">LOG IN</h1>
-	</header>
 
-	<main id="pageContent">
-        <div id="main">
+	<main>
+        <div class="login-content">
 
-            <form class="col-sm-6 col-sm-offset-3" action="login.php" method="post">
+            <h2>LOG IN</h2>
+
+            <form class="col-8 col-sm-7 col-md-5" action="" method="post">
                 <div class="form-group">
-                    <label for="username" class="control-label">Username</label>
-                    <input id="username" name="username" type="text" required="required" class="form-control">
+                    <label for="email" class="control-label">Email</label>
+                    <input id="email" name="email" type="text" required="required" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -31,9 +29,13 @@
                 </div>
 
                 <div class="form-group">
-                    <button name="btnSubtmi" type="submit" class="btn btn-primary">Submit</button>
+                    <button name="btnSubtmit" type="submit" class="signup-btn mt-2">Login</button>
+                </div>
+                <div class="form-group">
+                    <a href="<?= ($BASE) ?><?= (Base::instance()->alias('signup')) ?>">Or create a new account</a>
                 </div>
             </form>
+
  
             <!--<?php if ($errors): ?>
                 <p class="messages"><?= (implode("<br>", $errors)) ?></p>
@@ -42,8 +44,6 @@
         </div>
     </main>
 
-    
-    <script src="public/js/script.js"></script>
 </body>
 
 </html>
