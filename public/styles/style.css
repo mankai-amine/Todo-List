@@ -62,12 +62,20 @@ h2 {
     background-color: #D9430E;
 }
 
-.big, .signup-btn, .content p, .content ul {
+.big, main label{
+    font-size: 20pt;
+}
+
+.normal, .signup-btn, .content p, .content ul{
     font-size: 15pt;
 }
 
 .small{
     font-size: 10pt;
+}
+
+.errors{
+    
 }
 
 
