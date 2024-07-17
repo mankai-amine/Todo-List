@@ -31,5 +31,8 @@ $f3->route("GET @account: /account", 'Pages->account');
 $f3->route("GET @login: /login", 'Pages->login');
 //$f3->route("POST @login: /login/@name", 'Pages->loginSave');
 
+// -> signup
+$f3->route("GET @signup: /signup", 'Pages->signup');
+
 //$f3->route('GET|POST /helloworld/@name', 'pages->action');  /* How does this work ? */
 $f3->run();
