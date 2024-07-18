@@ -9,6 +9,8 @@ $f3 = Base::instance();
 //configuration file
 $f3->config('config.ini');
 
+$f3->config('access.ini');
+
 // framework to automatically load the classes within 
 //$f3->set('AUTOLOAD', 'Controllers/');
 
@@ -32,7 +34,6 @@ $f3->route("GET @account: /account/manage", 'Pages->account');
 
 // -> login
 $f3->route("GET @login: /login", 'Pages->login');
-//$f3->route("POST @login: /login/@name", 'Pages->loginSave');
 
 // -> signup
 $f3->route("GET @signup: /signup", 'Pages->signup');
