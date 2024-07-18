@@ -9,7 +9,6 @@ Class Model extends DB\SQL\Mapper{
      * @param string $table Name of the database table to interact with
      */
     public function __construct($table){
-        // TODO: move sensitive data to configuration file
         $f3 = Base::instance(); // load the framework
 
         $db_name = $f3->get('DBNAME');
