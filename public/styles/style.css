@@ -130,9 +130,18 @@ h2 {
     border-right: none;
     border-left: none;
     border-bottom: 1px solid #696969; 
-    height: 5rem;  
-}.inputs-text::placeholder{
+    padding: 5px 20px; 
+}.inputs-text::placeholder, #cancel{
     font-family: 'Inter';
     font-size: 13.5pt;
     color: #696969;
+}
+
+#cancel{
+    background-color: #f9f9f9;
+    padding: 5px 20px;
+    border: 1px solid #696969;
+    border-radius: 10px;
+} #cancel:hover{
+    background-color: #ececec;
 }
