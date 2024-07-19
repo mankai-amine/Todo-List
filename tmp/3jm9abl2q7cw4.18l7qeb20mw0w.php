@@ -30,6 +30,7 @@
         <div class="form-group">
             <textarea id="message" class="form-textarea" placeholder="ask us anything..."></textarea>
         </div>
+        <button type="submit" class="signup-btn">SEND</button>
         <hr class="custom-hr">
         <h2>OUR INFO</h2>
         <ul class="features-list">
