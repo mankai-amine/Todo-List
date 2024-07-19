@@ -5,7 +5,7 @@ Class Model extends DB\SQL\Mapper{
     protected $db;
 
     /**
-     * Parent class constructor - taken from steph repo 
+     * Parent class constructor  
      * @param string $table Name of the database table to interact with
      */
     public function __construct($table){
@@ -25,4 +25,5 @@ Class Model extends DB\SQL\Mapper{
         // create mapper of given table
         parent::__construct($this->db, $table);
     }
+
 }

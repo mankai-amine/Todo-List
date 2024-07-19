@@ -31,13 +31,17 @@ $f3->route("GET @contact: /contact", 'Pages->contact');
 
 // -> manage account
 $f3->route("GET @account: /account/manage", 'Pages->account');
+$f3->route("GET @account: /account/@uid", 'Pages->account');
+
 
 // -> login
 $f3->route("GET @login: /login", 'Pages->login');
 
 // -> signup
 $f3->route("GET @signup: /signup", 'Pages->signup');
+$f3->route("POST @signup: /signup", 'UserController->addUser');
 
-$f3->route('GET @tasklist: /account', 'Pages->tasks');
+// -> tasks
+$f3->route('GET @tasklist: /tasks', 'Pages->tasks');
 
 $f3->run();
