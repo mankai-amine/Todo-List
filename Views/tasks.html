@@ -1,18 +1,58 @@
 <include href="includes/loggedHeader.html">
 
-<main class="col-sm-8 col-md-8 col-lg-6 p-4">
-    <div class="d-flex justify-content-between">
-        <h2>YOUR TASKS</h2>
-        <hr class="custom-hr">
+<main class="col-sm-8 col-md-8 col-lg-8 p-4">
+    <h2>YOUR TASKS</h2>
+    <hr class="custom-hr">
+    <div class=" d-flex justify-content-between">
+        <button class="signup-btn">+ add task</button>
+        <select class="inputs">
+            <option>Sort by</option>
+            <option>Category</option>
+            <option>Earliest</option>
+            <option>Latest</option>
+            <option>Importance</option>
+        </select>
     </div>
-    <div class="task d-flex">
+    <div class="tasks">
+        <form class="container" action="" type="POST">
+            <div class="row new-task">
+                <div class="d-flex flex-column w-25">
+                    <input class="inputs-text" type="text" name="title" placeholder="TASK NAME">
+                    <input class="inputs-text" type="text" name="description" placeholder="description">
+                    <input class="inputs" type="date">
+                </div>
+                <div class="d-flex flex-column w-25">
+                    <select class="inputs mb-3">
+                        <option>Category</option>
+                        <option>Category</option>
+                        <option>Earliest</option>
+                        <option>Latest</option>
+                    </select>
+                    <select class="inputs">
+                        <option>Importance</option>
+                        <option>Category</option>
+                        <option>Earliest</option>
+                        <option>Latest</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="row d-flex justify-content-end">
+                <button class="signup-btn">create</button>
+            </div>
+        </form>
+        <div class="task">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
         <p>category</p>
-        <h6>TASK NAME</h6>
-        <p>| description</p>
+        <h5>TASK NAME</h6>
+        <p class="desc">| description</p>
         
 
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
     </div>
+    </div>
+    
 </main>
+
+<include href="includes/footer.html">
