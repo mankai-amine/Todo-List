@@ -21,4 +21,8 @@ class User extends Model{
 
         return $this->user_id; // last insersted id
     }
+
+    public function findUserByEmail($email) {
+        return $this->findOne(['email=?', $email]);
+    }
 }
