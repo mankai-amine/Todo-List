@@ -15,8 +15,18 @@ class Controller{
         
         // setup of page title
         $f3->set('pageTitle', '');
+        
         // setup errors variables used on several pages
         $f3->set("errors", null);
+
+        // Initialize item inputs with empty strings
+        $f3->set('item', [
+            'name' => '',
+            'email' => '',
+            'password' => '',
+            'password2' => ''
+        ]);
+
 
         // setup template
         $this->template = new Template;

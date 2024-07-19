@@ -49,7 +49,7 @@
    * GET signup page
      */
   function signup($f3){
-
+    
     $this->setPageTitle("Signup");
 
     echo $this->template->render("signup.html");
