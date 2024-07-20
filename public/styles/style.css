@@ -13,7 +13,7 @@ body {
     list-style-type: none;
 }.navbar li {
     margin-bottom: 20px;
-}.navbar a {
+}.link {
     text-decoration: none;
     color: black;
     font-size: 20pt;
@@ -62,7 +62,11 @@ h2 {
     background-color: #D9430E;
 }
 
-
+#accountNav{
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+}
 
 .big, main label{
     font-size: 20pt;
