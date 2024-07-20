@@ -35,7 +35,11 @@
         </ul>
         <hr class="custom-hr">
         <h2>GET STARTED</h2>
-        <button class="signup-btn">Sign Up</button>
+        <a href="<?= ($BASE) ?><?= (Base::instance()->alias('signup')) ?>">
+            <button  class="signup-btn">Sign Up</button>
+        </a>
+       
+
     </div>
 
 

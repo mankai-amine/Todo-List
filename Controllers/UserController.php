@@ -9,7 +9,8 @@
         // execute parent constructor
         parent::__construct($f3);
         
-        $this->model = new User(); // establish database connection    
+        // establish database connection 
+        $this->model = new User();    
     }
 
 
@@ -21,12 +22,16 @@
             // save and reroute
             $userId = $this->model->userSignup();
             $this->f3->reroute("@tasklist");
+        } else {
+            // keep the input values entered by the user
+            $this->f3->set("item", $this->f3->get("POST"));
         }
+
     }
 
     /**
      * Validate the data for the form after a POST method
-     * If nay date does not pass validation, the form is shown and false is returned
+     * If any data does not pass validation, the form is shown and false is returned
      * @return boolean TRUE if the form is valid
      */
     private function isFormValid(){
@@ -48,10 +53,16 @@
         }
 
         if ( $this->f3->get('POST.password') !== $this->f3->get('POST.password2') ){
-            array_push($errors, "Emails do not match");
+            array_push($errors, "Passwords do not match");
         }
 
-        //TODO: check if there is already an existing user with the same email
+        // check if there is already a user with the same email
+        $email = $this->f3->get('POST.email');
+        $existingUser = $this->model->findUserByEmail($email);
+
+        if ($existingUser){
+            array_push($errors, "There is an existing user with the same email address");
+        }
         
 
         if (empty($errors)){
@@ -65,6 +76,5 @@
             return false;
         }
     }
-
-
- }
+ 
+}
