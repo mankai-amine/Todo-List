@@ -15,7 +15,7 @@ class User extends Model{
      * Insert a new row into the table using POST data
      * @return int Last inserted ID
      */
-    public function userSignup(){
+    public function saveUser(){
         $this->copyfrom('POST');
         $this->save();
 

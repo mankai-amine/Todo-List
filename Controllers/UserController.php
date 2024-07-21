@@ -17,41 +17,41 @@
     /**
      * Validate and create a new user
      */
-    public function addUser(){
-        if ($this->isFormValid()){
-            // save and reroute
-            $userId = $this->model->userSignup();
-            $this->f3->reroute("@tasklist");
-        } else {
-            // keep the input values entered by the user
-            $this->f3->set("item", $this->f3->get("POST"));
-        }
-
+    public function userSignup(){
+        if ($this->isSignupFormValid()){
+            // save, get the ID and reroute
+            $userId = $this->model->saveUser();
+            $this->f3->reroute("@tasklist(@uid={$userId})");
+        } 
     }
+
+    /**
+     * Allow the user the log in
+     */
+    public function userLogin(){
+        if ($this->isLoginFormValid()){
+            // get the ID reroute
+            $email = $this->f3->get('POST.email');
+            $userId = $this->model->findUserByEmail($email)->user_id;
+            $this->f3->reroute("@tasklist(@uid={$userId})");
+        } 
+    }
+
 
     /**
      * Validate the data for the form after a POST method
      * If any data does not pass validation, the form is shown and false is returned
      * @return boolean TRUE if the form is valid
      */
-    private function isFormValid(){
+    private function isSignupFormValid(){
 
         $errors = [];
-        // validate the name
-        if (trim($this->f3->get('POST.name')) == ""){
-            array_push($errors, "Name is not valid");
-        }
+   
+        // check if the email is valid
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+        array_push($errors, "The email is not valid");
 
-        // validate the email
-        if (trim($this->f3->get('POST.email')) == ""){
-            array_push($errors, "Email is not valid");
-        }
-
-        // validate the password
-        if ( trim($this->f3->get('POST.password')) == "" ){
-            array_push($errors, "Email is not valid");
-        }
-
+        // check if the user entered the same password twice
         if ( $this->f3->get('POST.password') !== $this->f3->get('POST.password2') ){
             array_push($errors, "Passwords do not match");
         }
@@ -72,6 +72,43 @@
 
             $this->f3->set("errors", $errors);
             echo $this->template->render("signup.html");
+
+            return false;
+        }
+    }
+
+    /**
+     * Validate the data for the form after a POST method
+     * If any data does not pass validation, the form is shown and false is returned
+     * @return boolean TRUE if the form is valid
+     */
+    private function isLoginFormValid(){
+
+        $errors = [];
+
+        // check if there is a user with this email
+        $email = $this->f3->get('POST.email');
+        $existingUser = $this->model->findUserByEmail($email);
+
+        if (!$existingUser){
+            array_push($errors, "There is no user with this email address");
+        } else {
+            // check if the password is correct
+            $correctPassword = $existingUser->password;
+            $enteredPassword = $this->f3->get('POST.password');
+
+            if ($correctPassword !== $enteredPassword){
+                array_push($errors, "The paaword is incorrect");
+            }    
+        }  
+
+        if (empty($errors)){
+            return true;
+        } else {
+            $this->f3->set("item", $this->f3->get("POST"));
+
+            $this->f3->set("errors", $errors);
+            echo $this->template->render("login.html");
 
             return false;
         }
