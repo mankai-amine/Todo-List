@@ -98,7 +98,7 @@
             $enteredPassword = $this->f3->get('POST.password');
 
             if ($correctPassword !== $enteredPassword){
-                array_push($errors, "The paaword is incorrect");
+                array_push($errors, "The password is incorrect");
             }    
         }  
 

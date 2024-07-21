@@ -13,7 +13,7 @@
 <body>
 
 	<main>
-        <div class="login-content">
+        <div class="pageContent">
 
             <h2>LOG IN</h2>
 
@@ -36,11 +36,12 @@
                 </div>
             </form>
 
- 
-            <?php if ($errors): ?>
-                <p><?= (implode("<br>", $errors)) ?></p>
-            <?php endif; ?> 
-        
+            <div class="errors">
+                <?php if ($errors): ?>
+                    <p><?= (implode("<br>", $errors)) ?></p>
+                <?php endif; ?>
+            </div>
+             
         </div>
     </main>
 
