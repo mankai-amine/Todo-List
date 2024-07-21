@@ -20,12 +20,12 @@
             <form class="col-8 col-sm-7 col-md-5" action="" method="post">
                 <div class="form-group">
                     <label for="email" class="control-label">Email</label>
-                    <input id="email" name="email" type="text" required="required" class="form-control">
+                    <input id="email" name="email" type="text" required="required" class="form-control" value="<?= ($item['email']) ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="password" class="control-label">Password</label>
-                    <input id="password" name="password" type="text" required="required" class="form-control">
+                    <input id="password" name="password" type="text" required="required" class="form-control" value="<?= ($item['password']) ?>">
                 </div>
 
                 <div class="form-group">
@@ -37,9 +37,9 @@
             </form>
 
  
-            <!--<?php if ($errors): ?>
-                <p class="messages"><?= (implode("<br>", $errors)) ?></p>
-            <?php endif; ?>--> 
+            <?php if ($errors): ?>
+                <p><?= (implode("<br>", $errors)) ?></p>
+            <?php endif; ?> 
         
         </div>
     </main>
