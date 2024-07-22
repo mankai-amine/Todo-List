@@ -40,4 +40,15 @@ class User extends Model{
     public function findUserById( $uid ){
         return $this->findone(['user_id=?', $uid]);
     }
+
+    /**
+     * Update existing $id row from the table using POST data
+     * @param int ID of the row to edit
+     */
+    public function updateById( $id ){
+        $this->load( ['user_id=?', $id ]); 
+        $this->copyfrom('POST'); 
+    
+        $this->update(); 
+    }
 }
