@@ -97,27 +97,33 @@ h2 {
 }
 
 
-
-.login-content{
+/* LOGIN AND SIGN UP */
+.pageContent{
     display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.login-content h2{
+.pageContent h2{
     margin-top: 2em;
     margin-bottom: 2em;
 }
 
-.login-content a{
+.pageContent a{
     color: black;
     text-decoration: underline;
 }
 
-.login-content a:active{
+.pageContent a:active{
     color: #D9430E;
 }
+
+.errors{
+    color: red;
+}
+/* END */
+
 
 .inputs {
     padding: 5px 20px;
