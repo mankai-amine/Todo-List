@@ -91,9 +91,13 @@ h2 {
     height: 5rem;
 }.task *{
     margin: 0 auto;
+    max-width: 15%;
     flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
 }.desc{
-    flex-grow: 3;
+    flex-grow: 1;
+    max-width: 40%;
 }
 
 
