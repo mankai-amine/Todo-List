@@ -38,7 +38,7 @@
     }
 
     /**
-     * Allow the user the log in
+     * Access the user account
      */
     public function userAccount(){
         // fetch the user 
