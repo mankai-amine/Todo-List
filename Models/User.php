@@ -22,7 +22,22 @@ class User extends Model{
         return $this->user_id; // last insersted id
     }
 
+    /**
+     * Fetch a single value from the table using `email`
+     * @param email email of row to fetch
+     * @return Object database result
+     */
+
     public function findUserByEmail($email) {
         return $this->findOne(['email=?', $email]);
+    }
+
+    /**
+     * Fetch a single value from the table using the `id` primary key
+     * @param int Id of row to fetch
+     * @return Object database result
+     */
+    public function findUserById( $uid ){
+        return $this->findone(['user_id=?', $uid]);
     }
 }
