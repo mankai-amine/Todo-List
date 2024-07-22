@@ -1,46 +1,59 @@
-<include href="includes/loggedHeader.html"></include>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Account</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
 
-  <main class="col-5 p-4">
+  <include href="includes/loggedHeader.html"></include>
+  <!-- Include the header file content directly or using a server-side include mechanism -->
+<div id="header-placeholder"></div>
+
+<main class="col-5 p-4">
     <h2>YOUR ACCOUNT</h2>
     <hr class="custom-hr">
 
-
     <form>
-      <label for="userName">name</label>
-      <div class="d-flex mb-3">
-        <input class="form-input"  id="userName" name="" placeholder="your name" disabled>
-        <button class="signup-btn">change</button>
-      </div>
+        <label for="name">Name</label>
+        <div class="d-flex mb-3">
+            <input class="form-input" id="name" name="name" placeholder="your name" disabled value="{{ @item['name'] }}">
+            <button class="signup-btn" type="button">Change</button>
+        </div>
 
-      <label for="userName">email</label>
-      <div class="d-flex mb-3">
-        <input class="form-input"  id="userName" name="" placeholder="your email" disabled>
-        <button class="signup-btn">change</button>
-      </div>
+        <label for="email">Email</label>
+        <div class="d-flex mb-3">
+            <input class="form-input" id="email" name="email" placeholder="your email" disabled value="{{ @item['email'] }}">
+            <button class="signup-btn" type="button">Change</button>
+        </div>
 
-      <label for="userName ">password</label>
-      <div class="d-flex mb-3">
-        <input class="form-input"  id="userName" name="" placeholder="********" disabled>
-        <button class="signup-btn">change</button>
-      </div>
+        <label for="password">Password</label>
+        <div class="d-flex mb-3">
+            <input class="form-input" id="password" name="password" placeholder="********" disabled value="{{ @item['password'] }}">
+            <button class="signup-btn" type="button">Change</button>
+        </div>
 
-
-
-      <div class="row p-3">
-        <button class="signup-btn" type="submit">Save Changes</button>
-      </div>
-      
+        <div class="row p-3">
+            <button class="signup-btn" type="submit">Save Changes</button>
+        </div>
     </form>
     
     <div class="errors">
-      <p class="normal">error message</p>
-
+        <p class="normal">error message</p>
     </div>
+</main>
 
-  </main>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    $(function() {
+        $("#header-placeholder").load("includes/loggedHeader.html");
+    });
+</script>
 </body>
 </html>
