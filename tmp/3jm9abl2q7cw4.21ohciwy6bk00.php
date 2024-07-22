@@ -6,21 +6,21 @@
 
 
     <form>
-      <label for="userName">name</label>
+      <label for="name">name</label>
       <div class="d-flex mb-3">
-        <input class="form-input"  id="userName" name="" placeholder="your name" disabled>
+        <input class="form-input"  id="name" name="name" placeholder="your name" disabled value="<?= ($item['name']) ?>">
         <button class="signup-btn">change</button>
       </div>
 
-      <label for="userName">email</label>
+      <label for="email">email</label>
       <div class="d-flex mb-3">
-        <input class="form-input"  id="userName" name="" placeholder="your email" disabled>
+        <input class="form-input"  id="email" name="email" placeholder="your email" disabled value="<?= ($item['email']) ?>">
         <button class="signup-btn">change</button>
       </div>
 
-      <label for="userName ">password</label>
+      <label for="password ">password</label>
       <div class="d-flex mb-3">
-        <input class="form-input"  id="userName" name="" placeholder="********" disabled>
+        <input class="form-input"  id="password" name="password" placeholder="********" disabled value="<?= ($item['password']) ?>">
         <button class="signup-btn">change</button>
       </div>
 
