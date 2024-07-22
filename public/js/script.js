@@ -37,7 +37,11 @@ $(document).ready(function(){
     accountNav.show();
   });
 
-
+  // change the account credentials
+  $(".changeButton").click(function(event) {
+    event.preventDefault();
+    $(this).siblings("input").removeAttr("disabled").focus();
+  });
 
 
   console.log("js is working");
