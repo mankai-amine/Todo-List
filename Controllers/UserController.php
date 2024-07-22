@@ -37,6 +37,24 @@
         } 
     }
 
+    /**
+     * Allow the user the log in
+     */
+    public function userAccount(){
+        // fetch the user 
+        $user = $this->model->findUserById( $this->f3->get('PARAMS.uid') );
+
+        // redirect if user does not exist 
+        if (!$user){
+            $this->f3->reroute('@home');
+        }
+
+        $this->setPageTitle("Account");
+        $this->f3->set("item", $user);
+        echo $this->template->render("account.html");      
+
+    } 
+
 
     /**
      * Validate the data for the form after a POST method
