@@ -15,5 +15,7 @@ class TasksController extends Controller{
     $this->f3->set('tasks',$tasks);
     $this->setPageTitle("Tasks");
     echo $this->template->render("tasks.html");
+
+    //test
   }
 }
