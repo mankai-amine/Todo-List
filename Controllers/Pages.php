@@ -11,7 +11,6 @@
   function __construct($f3){
     parent::__construct($f3);
 
-
     //db connection
     //$this->model= new Model();
   }
@@ -58,6 +57,7 @@
   /**
    * GET account page
    */
+  
   function account(){
     $this->setPageTitle("Account");
     echo $this->template->render("account.html");
