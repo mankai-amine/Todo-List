@@ -1,3 +1,7 @@
+:root{
+    --width:100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -13,7 +17,7 @@ body {
     list-style-type: none;
 }.navbar li {
     margin-bottom: 20px;
-}.navbar a {
+}.link {
     text-decoration: none;
     color: black;
     font-size: 20pt;
@@ -62,7 +66,11 @@ h2 {
     background-color: #D9430E;
 }
 
-
+#accountNav{
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+}
 
 .big, main label{
     font-size: 20pt;
@@ -76,7 +84,7 @@ h2 {
     font-size: 10pt;
 }
 
-.task, .new-task{
+.task, .new-task, .update-task{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -87,9 +95,13 @@ h2 {
     height: 5rem;
 }.task *{
     margin: 0 auto;
+    max-width: 15%;
     flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
 }.desc{
-    flex-grow: 3;
+    flex-grow: 1;
+    max-width: 40%;
 }
 
 
@@ -136,9 +148,22 @@ h2 {
     border-right: none;
     border-left: none;
     border-bottom: 1px solid #696969; 
-    height: 5rem;  
-}.inputs-text::placeholder{
+    padding: 5px 20px; 
+}.inputs-text::placeholder, #cancel{
     font-family: 'Inter';
     font-size: 13.5pt;
     color: #696969;
+}.inputs-text:hover{
+    width: calc(var(--width)*3);
+    height: calc(var(--width)*3);
+    cursor: pointer;
+}
+
+#cancel{
+    background-color: #f9f9f9;
+    padding: 5px 20px;
+    border: 1px solid #696969;
+    border-radius: 10px;
+} #cancel:hover{
+    background-color: #ececec;
 }

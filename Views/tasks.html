@@ -4,7 +4,7 @@
     <h2>YOUR TASKS</h2>
     <hr class="custom-hr">
     <div class=" d-flex justify-content-between">
-        <button class="signup-btn">+ add task</button>
+        <button class="signup-btn" id="addTask">+ add task</button>
         <select class="inputs">
             <option>Sort by</option>
             <option>Category</option>
@@ -13,46 +13,87 @@
             <option>Importance</option>
         </select>
     </div>
-    <div class="tasks">
-        <form class="container" action="" type="POST">
-            <div class="row new-task">
-                <div class="d-flex flex-column w-25">
-                    <input class="inputs-text" type="text" name="title" placeholder="TASK NAME">
-                    <input class="inputs-text" type="text" name="description" placeholder="description">
-                    <input class="inputs" type="date">
-                </div>
-                <div class="d-flex flex-column w-25">
-                    <select class="inputs mb-3">
-                        <option>Category</option>
-                        <option>Category</option>
-                        <option>Earliest</option>
-                        <option>Latest</option>
-                    </select>
-                    <select class="inputs">
-                        <option>Importance</option>
-                        <option>Category</option>
-                        <option>Earliest</option>
-                        <option>Latest</option>
-                    </select>
-                </div>
-                
+    <div class="tasks" id="main">
+
+        <form id="new" class="container mt-4" action="" type="POST">
+            <div class="new-task">
+              <div class="d-flex flex-column w-25">
+                <input class="inputs-text mb-3" type="text" name="title" placeholder="TASK NAME">
+                <input class="inputs-text mb-3" type="text" name="description" placeholder="description">
+                <input class="inputs mb-3" type="date">
+              </div>
+              <div class="d-flex flex-column w-25">
+                <select name="category" class="inputs mb-3">
+                    <option>Category</option>
+                    <option value="School">School</option>
+                    <option value="Health">Health</option>
+                    <option value="Work">Work</option>
+                    <option value="Family">Family</option>
+                </select>
+                <select name="priority" class="inputs mb-3">
+                    <option>Importance</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>   
+              </div>
             </div>
-            <div class="row d-flex justify-content-end">
-                <button class="signup-btn">create</button>
+            <div class="d-flex justify-content-end border-bottom">  
+              <button id="cancel">cancel</button>
+              <button class="signup-btn" type="submit" id="createTask">create</button>
             </div>
         </form>
-        <div class="task">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-        <p>category</p>
-        <h5>TASK NAME</h6>
-        <p class="desc">| description</p>
-        
+        <repeat group="{{@tasks}}" value="{{@task}}">
+            <div class="task" id="task{{@task['task_id']}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-    </div>
+            <p class="d-none d-lg-block">{{ @task['category'] }}</p>
+            <h5>{{ @task['title'] }}</h6>
+            <p class="desc">| {{ @task['description'] }}</p>
+
+            <svg id="tripleButton{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            </div>
+
+            <form id="form{{@task['task_id']}}" class="container mt-4" action="" type="POST">
+                <div class="update-task">
+                  <div class="d-flex flex-column w-25">
+                    <input class="inputs-text mb-3" type="text" name="title" placeholder="{{@task['title']}}">
+                    <input class="inputs-text mb-3" type="text" name="description" placeholder="{{@task['description']}}">
+                    <input class="inputs mb-3" type="date" value="{{@task['due_date']}}">
+                  </div>
+                  <div class="d-flex flex-column w-25">
+                    <select name="category" class="inputs mb-3">
+                        <option value="{{@task['category']}}" selected>{{@task['category']}}</option>
+                        <option>Category</option>
+                        <option value="School">School</option>
+                        <option value="Health">Health</option>
+                        <option value="Work">Work</option>
+                        <option value="Family">Family</option>
+                    </select>
+                    <select name="priority" class="inputs mb-3">
+                        <option value="{{@task['priority']}}" selected>{{@task['priority']}}</option>
+                        <option>Importance</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>   
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end border-bottom">  
+                  <button id="cancel">cancel</button>
+                  <button class="signup-btn" type="submit" id="updateTask">update</button>
+                </div>
+            </form>
+        </repeat>
     </div>
     
 </main>
 
+<!--<script>
+    $(document).ready(function(){
+        console.log("js works");
+    });
+</script>
+-->
 <include href="includes/footer.html">
