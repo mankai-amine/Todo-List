@@ -1,3 +1,7 @@
+:root{
+    --width:100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -80,7 +84,7 @@ h2 {
     font-size: 10pt;
 }
 
-.task, .new-task{
+.task, .new-task, .update-task{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -149,6 +153,10 @@ h2 {
     font-family: 'Inter';
     font-size: 13.5pt;
     color: #696969;
+}.inputs-text:hover{
+    width: calc(var(--width)*3);
+    height: calc(var(--width)*3);
+    cursor: pointer;
 }
 
 #cancel{
