@@ -21,6 +21,10 @@
         if ($this->isSignupFormValid()){
             // save, get the ID and reroute
             $userId = $this->model->saveUser();
+
+            $_SESSION['sessIsAuth'] = true;
+            $_SESSION['sessId'] = $userId;
+
             $this->f3->reroute("@tasklist(@uid={$userId})");
         } 
     }
