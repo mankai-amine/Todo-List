@@ -58,13 +58,10 @@
      * Update the account credentials
      */
     public function updateAccount(){
-
-        if ($this->isAccountFormValid()){
-            $userId = $this->f3->get("PARAMS.uid");
-            $this->model->updateById( $userId );
-            $this->f3->reroute("@account(@uid={$userId})");
-        }       
-
+        
+        $userId = $this->f3->get("PARAMS.uid");
+        $this->model->updateById( $userId );
+        $this->f3->reroute("@account(@uid={$userId})");
     } 
 
 
@@ -143,28 +140,5 @@
         }
     }
 
-    /**
-     * Validate the data for the form after a POST method
-     * If any data does not pass validation, the form is shown and false is returned
-     * @return boolean TRUE if the form is valid
-     */
-    private function isAccountFormValid(){
-
-        $errors = [];
-
-        $email = $this->f3->get('POST.email');
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-        array_push($errors, "The email is not valid");
-        
-        if (empty($errors)){
-            return true;
-        } else {
-            $this->f3->set("item", $this->f3->get("POST"));
-            $this->f3->set("errors", $errors);
-            echo $this->template->render("account.html");
-
-            return false;
-        }
-    }
  
 }
