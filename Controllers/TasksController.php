@@ -18,4 +18,41 @@ class TasksController extends Controller{
 
     //test
   }
+
+  public function newTask(){
+    //exec the model
+    if ($this->validateTask()){
+      $this->model->insertTask();
+      //redirect
+      $this->setPageTitle('YOUR TASKS');
+      echo $this->template->render('tasks.html');
+    } else {
+      echo "could not process request";
+      //redirect
+      $this->f3->setPageTitle('YOUR TASKS');
+      echo $this->template->render('tasks.html');
+    }
+    
+
+    
+  }
+
+  private function validateTask(){
+    if (trim($this->f3->get('POST.title')) == ""){
+      return false;
+    }
+    if (trim($this->f3->get("POST.description")) == ""){
+      return false;
+    }
+    if (trim($this->f3->get("POST.due_date")) == ""){
+      return false;
+    }
+    if (trim($this->f3->get('POST.category')) == ""){
+      return false;
+    }
+    if (trim($this->f3->get("POST.priority")) == ""){
+      return false;
+    }
+    return true;
+  }
 }
