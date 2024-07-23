@@ -16,7 +16,10 @@
         </ul>
         <hr class="custom-hr">
         <h2>GET STARTED</h2>
-        <button class="signup-btn">Sign Up</button>
+        <button class="signup-btn" id="signupButton">Sign Up</button>
+
+
+        
     </div>
 
 

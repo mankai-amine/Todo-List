@@ -37,6 +37,11 @@ $(document).ready(function(){
     accountNav.show();
   });
 
+  // redirect to the signup page
+  $("#signupButton").click(function() {
+    window.location.href = "/Todo-List/signup";
+  });
+
   // change the account credentials
   $(".changeButton").click(function(event) {
     event.preventDefault();
