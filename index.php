@@ -31,8 +31,9 @@ $f3->route("GET @contact: /contact", 'Pages->contact');
 
 // -> account
 //$f3->route("GET @account: /account/manage", 'Pages->account');   // The user needs to log in to access the account page
-$f3->route("GET @account: /account", 'Pages->account');
-$f3->route("GET @account_user: /account/@uid", 'UserController->userAccount');
+//$f3->route("GET @account: /account", 'Pages->account');
+$f3->route("GET @account: /account/@uid", 'UserController->userAccount');
+$f3->route("POST @account: /account/@uid", 'UserController->updateAccount');
 
 // -> login
 $f3->route("GET @login: /login", 'Pages->login');

@@ -52,7 +52,16 @@
         $this->setPageTitle("Account");
         $this->f3->set("item", $user);
         echo $this->template->render("account.html");      
+    } 
 
+    /**
+     * Update the account credentials
+     */
+    public function updateAccount(){
+        
+        $userId = $this->f3->get("PARAMS.uid");
+        $this->model->updateById( $userId );
+        $this->f3->reroute("@account(@uid={$userId})");
     } 
 
 
@@ -82,7 +91,6 @@
             array_push($errors, "There is an existing user with the same email address");
         }
         
-
         if (empty($errors)){
             return true;
         } else {
@@ -131,5 +139,6 @@
             return false;
         }
     }
+
  
 }
