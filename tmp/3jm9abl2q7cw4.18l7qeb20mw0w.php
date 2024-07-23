@@ -1,5 +1,4 @@
 <?php echo $this->render('includes/header.html',NULL,get_defined_vars(),0); ?>
-    </div>
     <div class="content col-5">
         <h2>CONTACT US</h2>
         <hr class="custom-hr">

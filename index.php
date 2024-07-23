@@ -29,9 +29,7 @@ $f3->route("GET @home: /", 'Pages->home');
 // -> contact
 $f3->route("GET @contact: /contact", 'Pages->contact');
 
-// -> account
-//$f3->route("GET @account: /account/manage", 'Pages->account');   // The user needs to log in to access the account page
-//$f3->route("GET @account: /account", 'Pages->account');
+// -> account           // The user needs to log in to access the account page
 $f3->route("GET @account: /account/@uid", 'UserController->userAccount');
 $f3->route("POST @account: /account/@uid", 'UserController->updateAccount');
 
@@ -39,12 +37,15 @@ $f3->route("POST @account: /account/@uid", 'UserController->updateAccount');
 $f3->route("GET @login: /login", 'Pages->login');
 $f3->route("POST @login: /login", 'UserController->userLogin');
 
+// -> logout
+$f3->route("GET @logout: /logout", 'UserController->logout');
+
 // -> signup
 $f3->route("GET @signup: /signup", 'Pages->signup');
 $f3->route("POST @signup: /signup", 'UserController->userSignup');
 
-// -> tasks              // The user needs to log in to access teh tasks page
-$f3->route('GET @tasklist: /tasks', 'TasksController->taskList');
+// -> tasks           // The user needs to log in to access teh tasks page
+$f3->route('GET @tasklist: /tasks/@uid', 'TasksController->taskList');
 
 
 
