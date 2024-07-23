@@ -23,9 +23,8 @@ class TasksController extends Controller{
     //exec the model
     if ($this->validateTask()){
       $this->model->insertTask();
-      //redirect
-      $this->setPageTitle('YOUR TASKS');
-      echo $this->template->render('tasks.html');
+      //reset page data & redirect
+      $this->taskList();
     } else {
       echo "could not process request";
       //redirect
