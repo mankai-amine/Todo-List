@@ -24,7 +24,7 @@ class TasksController extends Controller{
     if ($this->validateTask()){
       $this->model->insertTask();
       //redirect
-      $this->f3->setPageTitle('YOUR TASKS');
+      $this->setPageTitle('YOUR TASKS');
       echo $this->template->render('tasks.html');
     } else {
       echo "could not process request";
