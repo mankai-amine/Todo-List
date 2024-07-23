@@ -16,4 +16,15 @@ class Tasks extends Model{
         $this->load('user_id=1');
         return $this->query;
     }
+
+    /**
+     * new task
+     */
+
+    public function insertTask(){
+        $this->copyfrom('POST');
+        $this->user_id=1;
+        $this->status='Ongoing';
+        $this->save();
+    } 
 }

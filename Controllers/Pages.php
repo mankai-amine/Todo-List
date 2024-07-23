@@ -64,8 +64,6 @@
   }
 
   function Tasks(){
-    $this->setPageTitle("Tasks");
-    echo $this->template->render("tasks.html");
   }
 
 }
