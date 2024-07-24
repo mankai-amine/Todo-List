@@ -10,6 +10,9 @@ class TasksController extends Controller{
   }
 
   public function taskList(){
+
+    $this-> loginRequired( ($this-> f3-> isSessLoggedIn)  && ($this->f3->get('PARAMS.uid') == $_SESSION['sessId'] )) ;
+
     $tasks = $this->model->getTasksByUser();
 
     $this->f3->set('tasks',$tasks);

@@ -21,6 +21,10 @@
         if ($this->isSignupFormValid()){
             // save, get the ID and reroute
             $userId = $this->model->saveUser();
+
+            $_SESSION['sessIsAuth'] = true;
+            $_SESSION['sessId'] = $userId;
+
             $this->f3->reroute("@tasklist(@uid={$userId})");
         } 
     }
@@ -30,9 +34,12 @@
      */
     public function userLogin(){
         if ($this->isLoginFormValid()){
-            // get the ID reroute
             $email = $this->f3->get('POST.email');
             $userId = $this->model->findUserByEmail($email)->user_id;
+
+            $_SESSION['sessIsAuth'] = true;
+            $_SESSION['sessId'] = $userId;
+            
             $this->f3->reroute("@tasklist(@uid={$userId})");
         } 
     }
@@ -41,13 +48,10 @@
      * Access the user account
      */
     public function userAccount(){
+        $this-> loginRequired( ($this-> f3-> isSessLoggedIn)  && ($this->f3->get('PARAMS.uid') == $_SESSION['sessId'] )) ;
+
         // fetch the user 
         $user = $this->model->findUserById( $this->f3->get('PARAMS.uid') );
-
-        // redirect if user does not exist 
-        if (!$user){
-            $this->f3->reroute('@home');
-        }
 
         $this->setPageTitle("Account");
         $this->f3->set("item", $user);
@@ -63,6 +67,16 @@
         $this->model->updateById( $userId );
         $this->f3->reroute("@account(@uid={$userId})");
     } 
+
+
+    /**
+     * User logout
+     */
+    public function logout(){
+        $_SESSION = []; 
+        session_destroy(); 
+        $this->f3->reroute("@home)");
+    }
 
 
     /**
