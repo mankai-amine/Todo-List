@@ -46,7 +46,8 @@
 
         <repeat group="{{@tasks}}" value="{{@task}}">
             <div class="task" id="task{{@task['task_id']}}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            
+            <svg id="statusToggle{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
 
             <p class="d-none d-lg-block">{{ @task['category'] }}</p>
             <h5>{{ @task['title'] }}</h6>
@@ -55,9 +56,10 @@
             <svg id="tripleButton{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
             </div>
 
-            <form id="form{{@task['task_id']}}" class="container mt-4" action="" type="POST">
+            <form id="form{{@task['task_id']}}" class="container mt-4" action="" method="POST">
                 <div class="update-task">
                   <div class="d-flex flex-column w-25">
+                    <input type="hidden" name="task_id" value="{{@task['task_id']}}">
                     <input class="inputs-text mb-3" type="text" name="title" placeholder="{{@task['title']}}">
                     <input class="inputs-text mb-3" type="text" name="description" placeholder="{{@task['description']}}">
                     <input class="inputs mb-3" type="date" value="{{@task['due_date']}}" name="due_date">
@@ -82,10 +84,11 @@
                 </div>
                 <div class="d-flex justify-content-end border-bottom">  
                   <button id="cancel">cancel</button>
-                  <button class="signup-btn" type="submit" id="updateTask">update</button>
+                  <button class="signup-btn" type="submit" id="update{{@task['task_id']}}">update</button>
                 </div>
             </form>
         </repeat>
+
     </div>
     
 </main>

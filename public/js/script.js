@@ -4,10 +4,48 @@ $(document).ready(function(){
   let accountNav = $('#accountNav');
   newTaskForm.hide();
   accountNav.hide();
+
   $('[id^="form"]').each(function(){
     $(this).hide();
+    $(this).click(function(){
+      $.ajax({
+        type: 'POST',
+        url: $(this).attr('action'),
+        data: $(this).serialize(), // Serialize form data
+        success: function() {
+          console.log('Success');
+        },
+        error: function() {
+          console.error('Error');
+        }
+      });
+      console.log("updated");
+    });
   });
   
+  $(`[id^='statusToggle']`).each(function(){
+    $(this).click(function(){
+      $.ajax({
+        type: 'POST',
+        url: "",
+        data: {
+          "task_id":"{{@task['task_id']}}",
+          "title":"{{@task['title']}}",
+          "description":"{{@task['description']}}",
+          "due_date":"{{@task['due_date']}}",
+          "priority":"{{@task['priority']}}",
+          "status":"Completed"
+        }, // manually send data to server
+        success: function() {
+          console.log('Success');
+        },
+        error: function() {
+          console.error('Error');
+        }
+      });
+      console.log("updated");
+    });
+  });
 
 
   //selecting the 3dots(id starting with) adding pop-up functionality to the form with the same id at the end
@@ -24,8 +62,9 @@ $(document).ready(function(){
       $(`#${taskId}`).hide();
 
     });
-  });
-    
+  });  
+
+  
 
   //select the newtask button, assign to it functionality
   $("#addTask").click(function(){
@@ -51,5 +90,3 @@ $(document).ready(function(){
 
   console.log("js is working");
 });
-
-h
