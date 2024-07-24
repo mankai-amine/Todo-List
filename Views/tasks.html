@@ -46,14 +46,20 @@
 
         <repeat group="{{@tasks}}" value="{{@task}}">
             <div class="task" id="task{{@task['task_id']}}">
-            
-            <svg id="statusToggle{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <input type="hidden" name="task_id" value="{{@task['task_id']}}">
+                <form action="" method="post" id="statusToggle{{@task['task_id']}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </form>
+                
 
-            <p class="d-none d-lg-block">{{ @task['category'] }}</p>
-            <h5>{{ @task['title'] }}</h6>
-            <p class="desc">| {{ @task['description'] }}</p>
+                <p id="cat" class="d-none d-lg-block">{{ @task['category'] }}</p>
+                <h5 id="title">{{ @task['title'] }}</h6>
+                <p id="desc" class="desc">| {{ @task['description'] }}</p>
 
-            <svg id="tripleButton{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                <svg id="tripleButton{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                
+                <input type="hidden" name="due_date" value="{{@task['due_date']}}">
+                <input type="hidden" name="priority" value="{{@task['priority']}}">
             </div>
 
             <form id="form{{@task['task_id']}}" class="container mt-4" action="" method="POST">

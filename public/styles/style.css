@@ -180,3 +180,14 @@ h2 {
 } #cancel:hover{
     background-color: #ececec;
 }
+
+@media only screen and (max-width: 600px) {
+    .navbar{
+        height: 20%;
+    }.navbar ul{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

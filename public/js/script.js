@@ -25,15 +25,24 @@ $(document).ready(function(){
   
   $(`[id^='statusToggle']`).each(function(){
     $(this).click(function(){
+      let taskParent = $(this).closest('.task');
+      let taskId = taskParent.children('input[name="task_id"]');
+      let title = taskParent.children('#title');
+      let description = taskParent.children('#desc');
+      let category = taskParent.children('#cat');
+      let due_date = taskParent.children('input[name="due_date"]');
+      let priority = taskParent.children('input[name="priority"]');
+
       $.ajax({
         type: 'POST',
         url: "",
         data: {
-          "task_id":"{{@task['task_id']}}",
-          "title":"{{@task['title']}}",
-          "description":"{{@task['description']}}",
-          "due_date":"{{@task['due_date']}}",
-          "priority":"{{@task['priority']}}",
+          "task_id": taskId.val(),
+          "title": title.text(),
+          "description":description.text().substring(2),
+          "category": category.text(),
+          "due_date":due_date.val(),
+          "priority":priority.val(),
           "status":"Completed"
         }, // manually send data to server
         success: function() {
