@@ -117,7 +117,6 @@ h2 {
 }
 
 
-/* LOGIN AND SIGN UP */
 
 .pageContent{
     display: flex; 
@@ -143,7 +142,16 @@ h2 {
 .errors{
     color: red;
 }
-/* END */
+
+.deleteAcc {
+    margin-left: 1em;
+}
+
+.deleteAcc:hover {
+    color: white;
+    text-decoration: none;
+}
+
 
 
 .inputs {

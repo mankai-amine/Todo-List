@@ -96,6 +96,5 @@ $(document).ready(function(){
     $(this).siblings("input").removeAttr("disabled").focus();
   });
 
-
   console.log("js is working");
 });
