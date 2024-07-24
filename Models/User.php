@@ -51,4 +51,13 @@ class User extends Model{
     
         $this->update(); 
     }
+
+     /**
+     * Delete a row from the table using the `id` primary key
+     * @param int ID of row to delete
+     */
+    public function deleteById( $id ){
+        $this->load(['user_id=?', $id]); 
+        $this->erase(); 
+    }
 }

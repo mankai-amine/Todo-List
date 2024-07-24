@@ -78,6 +78,18 @@
         $this->f3->reroute("@home)");
     }
 
+    /**
+     * Delete a given item
+     */
+    public function deleteAccount(){
+
+        // remove from database
+        $this->model->deleteById( $this->f3->get('PARAMS.uid') );
+
+        // redirect user
+        $this->f3->reroute('@home');
+    }
+
 
     /**
      * Validate the data for the form after a POST method

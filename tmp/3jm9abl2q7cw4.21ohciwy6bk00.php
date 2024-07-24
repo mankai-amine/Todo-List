@@ -28,6 +28,7 @@
 
       <div class="row p-3">
         <button class="signup-btn" type="submit">Save Changes</button>
+        <a class="deleteAcc signup-btn" href="<?= ($BASE) ?><?= (Base::instance()->alias('deleteUser')) ?>">Delete account</a>
       </div>
       
     </form>
