@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= ($pageTitle) ?></title>
-        <base href="<?= ($BASE) ?>/public/">
-        <link rel="stylesheet" href="styles/style.css">
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
+<?php echo $this->render('includes/header.html',NULL,get_defined_vars(),0); ?>
 
-<body class="row">
-
-    <div class="navbar col-3 col-md-2">
-        <ul>
-          <li><a class="link" href="<?= ($BASE) ?><?= (Base::instance()->alias('account')) ?>">Home</a>
-          <li><a class="link" href="<?= ($BASE) ?><?= (Base::instance()->alias('login')) ?>">Login</a>
-          <li><a class="link" href="<?= ($BASE) ?><?= (Base::instance()->alias('contact')) ?>">Contact</a>
-        </ul>
-    </div>
-
-	<main class="col-9 col-md-10">
+	<main class="col-md-9 col-lg-10">
         <div class="pageContent">
             <h2>LOG IN</h2>
 
