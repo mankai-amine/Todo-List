@@ -79,7 +79,7 @@
     }
 
     /**
-     * Delete a given item
+     * Delete a given user
      */
     public function deleteAccount(){
 
