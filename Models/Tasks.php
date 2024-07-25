@@ -19,15 +19,16 @@ class Tasks extends Model{
     /**
      * fetch all tasks by user id
      */
-    public function getTasksByUser($id){
-        $status = "Ongoing";
-        $this->load(array('user_id = ? AND status = ?', $id, $status));
+    public function getTasksByUser($id) {
+        $statuses = ['Ongoing', 'Pending'];
+        $this->load(array('user_id = ? AND status IN (?, ?)', $id, $statuses[0], $statuses[1]));
         return $this->query;
     }
+    
 
     public function sortByUser($id, $sortBy, $order){
-        $status = "Ongoing";
-        $this->load(array('user_id = ? AND status = ?', $id, $status));
+        $statuses = ['Ongoing', 'Pending'];
+        $this->load(array('user_id = ? AND status IN (?, ?)', $id, $statuses[0], $statuses[1]));
         $this->sort($sortBy, $order);
         return $this->query;
     }
@@ -45,9 +46,9 @@ class Tasks extends Model{
     /**
      * update task by task_id
      */
-    public function updateById($id, $f3){
+    public function updateById($id){
         $this->load( ['task_id=?', $id ]); // populate the object from the database
-        $this->user_id=$f3->get('PARAMS.uid');
+        $this->user_id=$this->get('PARAMS.uid');
         $this->copyfrom('POST'); // overwrite object with form data
         $this->update();
     }

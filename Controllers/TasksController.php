@@ -22,6 +22,12 @@ class TasksController extends Controller{
     }
 
     $this->f3->set('tasks',$tasks);
+
+    // set alert if the task is incompleted before 2 days
+    foreach ($tasks as &$task) {
+      $this->taskAlert($task);
+    }
+
     $this->setPageTitle("Tasks");
     echo $this->template->render("tasks.html");
   }
@@ -52,8 +58,6 @@ class TasksController extends Controller{
       $this->taskList();
     }
     
-
-    
   }
 
   private function validateTask() {
@@ -79,4 +83,20 @@ class TasksController extends Controller{
     
     return true;
   }
+
+  private function taskAlert(&$task) {
+
+    $task['reminder'] = '';
+
+    $today = new DateTime();
+    $dueDate = new DateTime($task['due_date']); 
+    $diff = $today->diff($dueDate)->days;
+ 
+    if( $diff <= 2 && (trim($task['status']) != "Complete")){
+      $task->reminder = 'alert'; 
+    } else {
+      $task->reminder = ''; 
+    }
+  }
+
 }
