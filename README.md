@@ -1,6 +1,6 @@
 # Todo-List
 
-# Overall purpose of the website
+**Overall purpose of the website
 The Todo-List is a web app designed to help individuals manage their tasks efficiently. 
 
 # Description of website and its features 
