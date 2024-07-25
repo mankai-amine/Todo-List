@@ -46,7 +46,8 @@ $f3->route("GET @logout: /logout", 'UserController->logout');
 $f3->route("GET @signup: /signup", 'Pages->signup');
 $f3->route("POST @signup: /signup", 'UserController->userSignup');
 
-// -> tasks           // The user needs to log in to access the tasks page
+// The user needs to log in to access teh tasks page
+//$f3->route('GET @tasklist: /tasks', 'TasksController->taskList');
 $f3->route('GET @tasklist: /tasks/@uid', 'TasksController->taskList');
 $f3->route('POST @tasklist: /tasks/@uid', 'TasksController->newTask');
 
