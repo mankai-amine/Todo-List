@@ -69,10 +69,11 @@
                     <input type="hidden" name="status" value="Completed">
                     <button type="submit" class="signup-btn wrap">Mark complete</button>
                 </form>
+                
 
-                <p id="cat" class="d-none d-lg-block">{{ @task['category'] }}</p>
-                <h5 id="title">{{ @task['title'] }}</h5>
-                <p id="desc" class="desc">| {{ @task['description'] }}</p>
+                <p id="cat" class="d-none d-lg-block ">{{ @task['category'] }}</p>
+                <h5 id="title" class={{@reminder}}  >{{ @task['title'] }} </h6>
+                <p id="desc" class="desc {{@reminder}}"> | {{ @task['description'] }}</p>
 
                 <svg id="tripleButton{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
                 

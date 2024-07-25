@@ -125,7 +125,9 @@ h2 {
     max-width: 40%;
 }
 
-
+.alert{
+    color: red;
+}
 
 .pageContent{
     display: flex; 

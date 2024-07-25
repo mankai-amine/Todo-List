@@ -7,6 +7,20 @@ class TasksController extends Controller{
   public function __construct($f3){
     parent::__construct($f3);
     $this->model = new Tasks();
+
+    // set an alert if the task is not completed 2 days prior to the due date
+    $task = $this->model->getSingleTask( $this->f3->get('PARAMS.uid') );
+
+    $today = new DateTime();
+    $dueDate = new DateTime($task['due_date']); 
+    $diff = $today->diff($dueDate)->days;
+
+    if( $diff<=2 &&  trim($task['status'] == "Pending") ){
+      $f3->set('reminder', 'alert');
+    } else {
+      $f3->set('reminder', '');
+    }
+    
   }
 
   public function taskList(){
