@@ -5,11 +5,10 @@ Class Model extends DB\SQL\Mapper{
     protected $db;
 
     /**
-     * Parent class constructor - taken from steph repo 
+     * Parent class constructor  
      * @param string $table Name of the database table to interact with
      */
     public function __construct($table){
-        // TODO: move sensitive data to configuration file
         $f3 = Base::instance(); // load the framework
 
         $db_name = $f3->get('DBNAME');
@@ -26,4 +25,5 @@ Class Model extends DB\SQL\Mapper{
         // create mapper of given table
         parent::__construct($this->db, $table);
     }
+
 }
