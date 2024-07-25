@@ -111,6 +111,10 @@ h2 {
     overflow: hidden;
 }
 
+.task .wrap{
+    overflow: visible;
+}
+
 .desc{
     flex-grow: 1;
     max-width: 40%;
@@ -190,4 +194,17 @@ h2 {
         flex-direction: row;
         justify-content: space-around;
     }
+}
+svg{
+    stroke: #696969;
+}
+  
+svg:hover {
+    stroke: #069251;
+}
+
+[id^="toggle"]{
+    border: none;
+    transition: stroke 0.3s ease;
+    background-color: rgba(0,0,0,0);
 }

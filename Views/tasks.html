@@ -5,13 +5,23 @@
     <hr class="custom-hr">
     <div class=" d-flex justify-content-between">
         <button class="signup-btn" id="addTask">+ add task</button>
+        <form action="" method="get">
         <select class="inputs">
-            <option>Sort by</option>
-            <option>Category</option>
-            <option>Earliest</option>
-            <option>Latest</option>
-            <option>Importance</option>
+            <option value="" disabled selected>Sort by</option>
+            <option value="category">Category</option>
+            <option value="due_date">Due Date</option>
+            <option value="priority">Importance</option>
         </select>
+
+        <select class="inputs">
+            <option value="" disabled selected>order</option>
+            <option value="ASC">Smallest First</option>
+            <option value="DESC">Biggest first</option>
+        </select>
+        <button type="submit" class="inputs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"/></svg>
+        </button>
+        </form>
     </div>
     <div class="tasks" id="main">
 
@@ -46,14 +56,22 @@
 
         <repeat group="{{@tasks}}" value="{{@task}}">
             <div class="task" id="task{{@task['task_id']}}">
-                <input type="hidden" name="task_id" value="{{@task['task_id']}}">
-                <form action="" method="post" id="statusToggle{{@task['task_id']}}">
+                <button id="toggle{{@task['task_id']}}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </button>
+                <form action="" method="post" id="statusForm{{@task['task_id']}}">
+                    <input type="hidden" name="task_id" value="{{@task['task_id']}}">
+                    <input type="hidden" name="title" value="{{@task['title']}}">
+                    <input type="hidden" name="description" value="{{@task['description']}}">
+                    <input type="hidden" name="due_date" value="{{@task['due_date']}}">
+                    <input type="hidden" name="category" value="{{@task['category']}}">
+                    <input type="hidden" name="priority" value="{{@task['priority']}}">
+                    <input type="hidden" name="status" value="Completed">
+                    <button type="submit" class="signup-btn wrap">Mark complete</button>
                 </form>
-                
 
                 <p id="cat" class="d-none d-lg-block">{{ @task['category'] }}</p>
-                <h5 id="title">{{ @task['title'] }}</h6>
+                <h5 id="title">{{ @task['title'] }}</h5>
                 <p id="desc" class="desc">| {{ @task['description'] }}</p>
 
                 <svg id="tripleButton{{@task['task_id']}}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
