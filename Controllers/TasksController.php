@@ -7,20 +7,6 @@ class TasksController extends Controller{
   public function __construct($f3){
     parent::__construct($f3);
     $this->model = new Tasks();
-
-    // set an alert if the task is not completed 2 days prior to the due date
-    $task = $this->model->getSingleTask( $this->f3->get('PARAMS.uid') );
-
-    $today = new DateTime();
-    $dueDate = new DateTime($task['due_date']); 
-    $diff = $today->diff($dueDate)->days;
-
-    if( $diff<=2 &&  trim($task['status'] == "Pending") ){
-      $f3->set('reminder', 'alert');
-    } else {
-      $f3->set('reminder', '');
-    }
-    
   }
 
   public function taskList(){
@@ -36,6 +22,12 @@ class TasksController extends Controller{
     }
 
     $this->f3->set('tasks',$tasks);
+
+    // set alert if the task is incompleted before 2 days
+    foreach ($tasks as &$task) {
+      $this->taskAlert($task);
+    }
+
     $this->setPageTitle("Tasks");
     echo $this->template->render("tasks.html");
   }
@@ -66,8 +58,6 @@ class TasksController extends Controller{
       $this->taskList();
     }
     
-
-    
   }
 
   private function validateTask() {
@@ -93,4 +83,20 @@ class TasksController extends Controller{
     
     return true;
   }
+
+  private function taskAlert(&$task) {
+
+    $task['reminder'] = '';
+
+    $today = new DateTime();
+    $dueDate = new DateTime($task['due_date']); 
+    $diff = $today->diff($dueDate)->days;
+ 
+    if( $diff <= 2 && (trim($task['status']) != "Complete")){
+      $task->reminder = 'alert'; 
+    } else {
+      $task->reminder = ''; 
+    }
+  }
+
 }
