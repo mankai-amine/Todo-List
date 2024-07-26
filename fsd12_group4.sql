@@ -64,10 +64,10 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`task_id`, `user_id`, `category`, `title`, `description`, `due_date`, `priority`, `status`) VALUES
-(1, 1, 'School', 'Prepare for exam', 'I need to review the last chapters, and work on some exercices.', '2024-07-26', 'Medium', 'Ongoing'),
+(1, 1, 'School', 'Prepare for exam', 'I need to review the last chapters, and work on some exercices.', '2024-07-27', 'Medium', 'Ongoing'),
 (2, 4, 'Work', 'Prepare the report', 'Prepare the financial report of quarter 2 including all the specific points mentioned by the manager.', '2024-07-31', 'Low', 'Pending'),
-(3, 3, 'Family', 'Jim\'s wedding', 'Look for a good present to offer Jim for his wedding.', '2024-07-23', 'High', 'Ongoing'),
-(4, 2, 'School', 'The database project', 'Finalize the database project (code, report, and PPT).', '2024-07-22', 'High', 'Ongoing');
+(3, 3, 'Family', 'Jim\'s wedding', 'Look for a good present to offer Jim for his wedding.', '2024-07-28', 'High', 'Ongoing'),
+(4, 2, 'School', 'The database project', 'Finalize the database project (code, report, and PPT).', '2024-07-30', 'High', 'Ongoing');
 
 -- --------------------------------------------------------
 
