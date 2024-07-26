@@ -40,6 +40,9 @@ $(document).ready(function(){
 
       $(`#${formId}`).show();
       categiry.hide();
+      $(`#task${int}`).children('#title').hide();
+      $(`#task${int}`).children('#cat').hide();
+
     })
   });  
 
