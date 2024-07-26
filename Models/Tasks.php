@@ -46,9 +46,9 @@ class Tasks extends Model{
     /**
      * update task by task_id
      */
-    public function updateById($id){
+    public function updateById($id, $f3){
         $this->load( ['task_id=?', $id ]); // populate the object from the database
-        $this->user_id=$this->get('PARAMS.uid');
+        $this->user_id=$f3->get('PARAMS.uid');
         $this->copyfrom('POST'); // overwrite object with form data
         $this->update();
     }
