@@ -44,8 +44,18 @@ How to Use
     Add Tasks: Use the task management interface to add new tasks, set deadlines, and categorize them.
     Contact Support: If you need help, use the contact form to send a message to the support team.
 
-Future Enhancements
+Overall Purpose of the Website:
+The Todo-List is a web app designed to help individuals manage their tasks efficiently.
 
-    Task Prioritization: Implementing a feature to prioritize tasks based on importance and urgency.
-    Notification System: Adding email and in-app notifications for upcoming deadlines.
-    Collaborative Features: Allowing users to share tasks and collaborate with others.
+Description of Website and Its Features:
+
+    Home page
+    Contact Us page
+    User registration and authentication
+    Registered user section where users can manage their profile and delete their account
+    Tasks section where authenticated users can view, add, update, remove, and filter tasks
+
+Technology Stack:
+
+    Front-End: HTML5, CSS3, Bootstrap, JQuery
+    Back-End: PHP with Fat-Free Framework (F3), MySQL
