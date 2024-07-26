@@ -9,6 +9,7 @@ The Todo-List is a web app designed to help individuals manage their tasks effic
 - User registration and authentication
 - Registered user section where users can manage their profile and delete their account
 - Tasks section where authenticated users can view, add, update, remove, and filter tasks
+- Session was used to keep the user logged in. A user who is not logged can't access the “account” and “tasks” pages
 
 **Technology Stack:**
 - **Front-End:** HTML5, CSS3, Bootstrap, JQuery
