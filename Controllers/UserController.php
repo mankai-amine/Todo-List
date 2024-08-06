@@ -19,6 +19,12 @@
      */
     public function userSignup(){
         if ($this->isSignupFormValid()){
+
+            // Hash the password before saving
+            $password = $this->f3->get('POST.password');
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->f3->set('POST.password', $hashedPassword);
+
             // save, get the ID and reroute
             $userId = $this->model->saveUser();
 
@@ -149,7 +155,7 @@
             $correctPassword = $existingUser->password;
             $enteredPassword = $this->f3->get('POST.password');
 
-            if ($correctPassword !== $enteredPassword){
+            if (!password_verify($enteredPassword, $correctPassword)) {
                 array_push($errors, "The password is incorrect");
             }    
         }  
