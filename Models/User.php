@@ -45,12 +45,20 @@ class User extends Model{
      * Update existing $id row from the table using POST data
      * @param int ID of the row to edit
      */
-    public function updateById( $id ){
-        $this->load( ['user_id=?', $id ]); 
-        $this->copyfrom('POST'); 
-    
-        $this->update(); 
+    public function updateById($id) {
+        // Load the user by ID
+        $this->load(['user_id=?', $id]);
+
+        // Copy POST data into the object
+        $this->copyfrom('POST');
+
+        // Hash the password before updating
+        $this->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        
+        // Save the updated object
+        $this->update();
     }
+
 
      /**
      * Delete a row from the table using the `id` primary key
