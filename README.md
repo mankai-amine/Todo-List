@@ -1,4 +1,5 @@
-# Task Manager : A full-stack web application designed to help individuals manage their tasks efficiently 
+# Task Manager :  
+A full-stack web application designed to help individuals manage their tasks efficiently. 
 ## Technologies:
 - PHP with Fat-Free Framework (F3)
 - MySQL
